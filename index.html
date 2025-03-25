@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Pizarro - Desarrollador Full Stack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f4f1ea;
+            color: #1a1a1a;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 3rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .tech-item {
+            @apply transition-all;
+            background-color: #8B0000;
+            color: white;
+            width: 100%;
+            max-width: 50px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-item i {
+            @apply transition-all;
+            color: white;
+            font-size: 1.25rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tech-item:hover {
+            background-color: #590000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .tech-item:hover i {
+            transform: scale(1.1);
+        }
+
+        .tech-item p {
+            @apply font-medium text-xs uppercase tracking-wider;
+            color: #1a1a1a;
+            position: absolute;
+            width: 120px;
+            text-align: center;
+            left: 50%;
+            transform: translateX(-50%);
+            top: calc(100% + 0.75rem);
+        }
+
+        .gradient-text {
+            @apply text-[#8B0000] relative;
+        }
+
+        .hero-pattern {
+            background-color: #f4f1ea;
+            background-image: 
+                linear-gradient(45deg, #8B0000 25%, transparent 25%),
+                linear-gradient(-45deg, #8B0000 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #8B0000 75%),
+                linear-gradient(-45deg, transparent 75%, #8B0000 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            opacity: 0.1;
+        }
+
+        .diagonal-split {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #8B0000 0%, #2B0000 100%);
+        }
+
+        .geometric-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .geometric-pattern::before,
+        .geometric-pattern::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+        }
+
+        .geometric-pattern::before {
+            width: 200%;
+            height: 2px;
+            top: 60%;
+            left: -50%;
+            transform: rotate(-30deg);
+            box-shadow: 
+                0 30px #fff,
+                0 60px #fff,
+                0 90px #fff,
+                0 -30px #fff,
+                0 -60px #fff,
+                0 -90px #fff;
+        }
+
+        .geometric-pattern::after {
+            width: 2px;
+            height: 200%;
+            top: -50%;
+            right: 20%;
+            transform: rotate(-30deg);
+            box-shadow: 
+                30px 0 #fff,
+                60px 0 #fff,
+                90px 0 #fff,
+                -30px 0 #fff,
+                -60px 0 #fff,
+                -90px 0 #fff;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-text {
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-button {
+            @apply px-8 py-3 transition-all;
+            position: relative;
+            z-index: 15;
+            min-width: 180px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background: white;
+            color: #8B0000;
+            text-shadow: none;
+            transform: translateY(-2px);
+        }
+
+        .hero-buttons {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.1);
+            animation: float 20s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            transform: rotate(45deg);
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            transform: rotate(30deg);
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            transform: rotate(60deg);
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg) translateY(0); }
+            50% { transform: rotate(180deg) translateY(-20px); }
+            100% { transform: rotate(360deg) translateY(0); }
+        }
+
+        .animated-border {
+            position: relative;
+            border: 2px solid #8B0000;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .animated-border:hover {
+            background: #8B0000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding: 0 1.5rem;
+            color: #8B0000;
+        }
+
+        .section-title::before, .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: #8B0000;
+            transform: translateY(-50%);
+        }
+
+        .section-title::before {
+            right: 100%;
+        }
+
+        .section-title::after {
+            left: 100%;
+        }
+
+        .project-card {
+            @apply bg-white shadow-xl;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+            background: linear-gradient(145deg, #ffffff, #f8f8f8);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.2);
+            border-color: rgba(139, 0, 0, 0.2);
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        }
+
+        .project-tech-tag {
+            @apply px-3 py-1 text-xs font-medium rounded-full;
+            background-color: rgba(139, 0, 0, 0.15);
+            color: #8B0000;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        .project-features {
+            @apply space-y-2 mb-4;
+            background-color: rgba(139, 0, 0, 0.03);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(139, 0, 0, 0.05);
+        }
+
+        .project-feature-item {
+            @apply flex items-start space-x-2 text-sm text-gray-700;
+        }
+
+        .project-feature-item i {
+            @apply text-[#8B0000] mt-1;
+            filter: drop-shadow(0 1px 1px rgba(139, 0, 0, 0.2));
+        }
+
+        .nav-link {
+            @apply relative text-gray-800 transition-colors font-medium;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B0000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #8B0000;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #8B0000;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Estilos para los iconos de contacto */
+        .contact-icon {
+            @apply transition-all;
+            color: white;
+            background-color: #8B0000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon i {
+            font-size: 1.5rem;
+        }
+
+        .contact-icon:hover {
+            background-color: #590000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ajustar el espaciado entre los iconos */
+        #contacto .flex.justify-center {
+            gap: 2rem;
+        }
+
+        .project-size-tag {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <nav class="fixed w-full z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-[#8B0000] hover:text-[#590000] transition-colors">
+                JP.dev
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+                <a href="#tecnologias" class="nav-link">Tecnologías</a>
+                <a href="#proyectos" class="nav-link">Proyectos</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden diagonal-split">
+        <div class="geometric-pattern"></div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container mx-auto px-4 py-20 text-center relative hero-content">
+            <div class="hero-text mb-8">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white tracking-tighter" style="font-feature-settings: 'caps' 1" data-aos="fade-right" data-aos-duration="1000">JOSÉ</h1>
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white/90 tracking-tighter" style="font-feature-settings: 'caps' 1" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">PIZARRO</h1>
+                <p class="text-lg md:text-xl text-white/80 font-medium tracking-wider" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Desarrollador Full Stack</p>
+            </div>
+            <div class="hero-buttons flex justify-center space-x-8 mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <a href="#proyectos" class="hero-button">
+                    Proyectos
+                </a>
+                <a href="#contacto" class="hero-button">
+                    Contacto
+                </a>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none"></div>
+    </section>
+
+    <!-- Sobre Mí Section -->
+    <section id="sobre-mi" class="py-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="section-title mb-12 text-center" data-aos="fade-up">Sobre Mí</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-lg text-gray-700 mb-8">
+                    Soy Analista Programador con experiencia en desarrollo Full Stack. Me especializo en React.js, Django y FastAPI, 
+                    creando aplicaciones eficientes y escalables. Tengo habilidades en gestión de bases de datos con PostgreSQL y MongoDB, 
+                    además de experiencia en consumo de APIs REST y autenticación con JWT. Actualmente me encuentro en búsqueda activa de 
+                    oportunidades laborales donde pueda aplicar mis conocimientos y seguir creciendo profesionalmente.
+                </p>
+
+                <!-- Certificados -->
+                <div class="space-y-4 mb-8">
+                    <h3 class="text-xl font-bold text-[#8B0000] mb-4">Certificados</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold">Desarrollador Full Stack</p>
+                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold">Diseño y Gestión de Base de Datos</p>
+                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold">Diseño Ágil de Sistemas</p>
+                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold">Desarrollo de Aplicaciones Básicas</p>
+                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                            <p class="font-semibold">NDG Linux Unhatched</p>
+                            <p class="text-gray-600">Cisco Networking Academy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competencias -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-[#8B0000] mb-4">Competencias</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-lightbulb text-[#8B0000] text-xl mb-2"></i>
+                            <p class="font-medium">Creatividad e innovación</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-graduation-cap text-[#8B0000] text-xl mb-2"></i>
+                            <p class="font-medium">Facilidad para aprender</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-clock text-[#8B0000] text-xl mb-2"></i>
+                            <p class="font-medium">Gestión del tiempo</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-language text-[#8B0000] text-xl mb-2"></i>
+                            <p class="font-medium">Español (Nativo)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="300">
+                <a href="cv/José Pizarro Ortiz CV.pdf" target="_blank" class="px-6 py-3 border-2 border-[#8B0000] text-[#8B0000] rounded-lg hover:bg-[#8B0000] hover:text-white transition-colors flex items-center space-x-2">
+                    <i class="fas fa-download"></i>
+                    <span>CV</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías Section -->
+    <section id="tecnologias" class="py-20 bg-gray-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="section-title mb-12 text-center" data-aos="fade-up">Tecnologías</h2>
+            <div class="tech-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="tech-item">
+                    <i class="fab fa-react"></i>
+                    <p>React.js</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-python"></i>
+                    <p>Python</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-js"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-html5"></i>
+                    <p>HTML5</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <p>CSS3</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database"></i>
+                    <p>PostgreSQL</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-server"></i>
+                    <p>MongoDB</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-git-alt"></i>
+                    <p>Git</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="py-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="section-title mb-12 text-center" data-aos="fade-up">Proyectos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="aspect-video bg-gray-100 relative group overflow-hidden">
+                        <img src="img/medScan.png" alt="MedScan Preview" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-eye text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <h3 class="text-xl font-bold mb-1 text-[#8B0000]">MedScan</h3>
+                            <p class="text-gray-500 text-xs font-medium">Extractor de Texto de Exámenes Médicos</p>
+                        </div>
+                        
+                        <p class="text-sm text-gray-600 mb-3">
+                            Aplicación web potenciada por IA para extraer texto de exámenes médicos en formato PDF o imagen. Actualmente en desarrollo activo, con mejoras continuas en su motor de IA y procesamiento de documentos.
+                        </p>
+
+                        <div class="project-features" id="medscan-features" style="display: none;">
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extracción de texto mediante OCR avanzado</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Procesamiento inteligente con IA</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Interfaz intuitiva y validación de archivos</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mejora continua de la precisión mediante IA</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-3">
+                            <span class="p-1 project-tech-tag">Next.js</span>
+                            <span class="p-1 project-tech-tag">FastAPI</span>
+                            <span class="p-1 project-tech-tag">Tailwind CSS</span>
+                            <span class="p-1 project-tech-tag">Tesseract OCR</span>
+                            <span class="p-1 project-tech-tag">pdfplumber</span>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <!-- <a href="#" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
+                                Demo
+                            </a> -->
+                            <a href="https://github.com/JoseP190/MedScan---Extractor-de-Texto-de-Examenes-Medicos/tree/main" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <button onclick="toggleMedScanFeatures()" class="mt-4 text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <i class="fas fa-chevron-down mr-2 group-hover:translate-y-1 transition-transform" id="medscan-arrow"></i>
+                            <span id="medscan-button-text">Ver más</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-video bg-gray-100 relative group overflow-hidden">
+                        <img src="img/chp.png" alt="Planet Habitability Calculator Preview" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-eye text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">Calculadora de Habitabilidad Planetaria</h3>
+                            <p class="text-gray-500 text-sm font-medium">Explorador Interactivo de Exoplanetas</p>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-4">
+                            Aplicación web interactiva que permite calcular y visualizar la habitabilidad de planetas y exoplanetas, incluyendo una base de datos completa de exoplanetas conocidos.
+                        </p>
+
+                        <div class="project-features" id="chp-features" style="display: none;">
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Calculadora de habitabilidad multiparamétrica</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Visualización 2D interactiva de planetas</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Base de datos de exoplanetas conocidos</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Recursos educativos sobre colonización espacial</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-3">
+                            <span class="p-1 project-tech-tag">React</span>
+                            <span class="p-1 project-tech-tag">TypeScript</span>
+                            <span class="p-1 project-tech-tag">Material-UI</span>
+                            <span class="p-1 project-tech-tag">Vite</span>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <!-- <a href="#" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
+                                Demo
+                            </a> -->
+                            <a href="https://github.com/JoseP190/Calculadora-de-Habitabilidad-Planetaria" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <button onclick="toggleCHPFeatures()" class="mt-4 text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <i class="fas fa-chevron-down mr-2 group-hover:translate-y-1 transition-transform" id="chp-arrow"></i>
+                            <span id="chp-button-text">Ver más</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="aspect-video bg-gray-100 relative group overflow-hidden">
+                        <img src="img/graficando.png" alt="GrafiCando Preview" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-eye text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">GrafiCando</h3>
+                            <p class="text-gray-500 text-sm font-medium">Juego Educativo de Estadística</p>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-4">
+                            Juego educativo de cartas diseñado para aprender y practicar conceptos de estadística y análisis de datos de una manera divertida e interactiva.
+                        </p>
+
+                        <div class="project-features" id="graficando-features" style="display: none;">
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cartas comodín con efectos únicos</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Preguntas de análisis de gráficos</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Datos curiosos sobre estadística</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Múltiples tipos de preguntas interactivas</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-3">
+                            <span class="p-1 project-tech-tag">HTML5</span>
+                            <span class="p-1 project-tech-tag">CSS3</span>
+                            <span class="p-1 project-tech-tag">JavaScript</span>
+                            <span class="p-1 project-tech-tag">Tailwind CSS</span>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <a href="https://grafi-cando.vercel.app/"  target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
+                                Demo
+                            </a>
+                            <a href="https://github.com/JoseP190/GrafiCando" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <button onclick="toggleGraficandoFeatures()" class="mt-4 text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <i class="fas fa-chevron-down mr-2 group-hover:translate-y-1 transition-transform" id="graficando-arrow"></i>
+                            <span id="graficando-button-text">Ver más</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="aspect-video bg-gray-100 relative group overflow-hidden">
+                        <img src="img/erp.png" alt="ERP Componentes Demo Preview" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-eye text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">ERP Componentes Demo</h3>
+                            <p class="text-gray-500 text-sm font-medium">Sistema de Componentes Reutilizables</p>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-4">
+                            Demostración de componentes reutilizables para un sistema ERP, construido con Next.js, TypeScript y Tailwind CSS. Incluye una amplia gama de componentes UI y vistas de datos.
+                        </p>
+
+                        <div class="project-features" id="erp-features" style="display: none;">
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Barra lateral con sistema de navegación intuitivo</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Componentes UI reutilizables (Avatar, Badge, Button, Card)</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Vistas de datos con gráficos y tablas</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sistema de temas claro/oscuro</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Diseño responsivo y accesible</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-3">
+                            <span class="p-1 project-tech-tag">Next.js</span>
+                            <span class="p-1 project-tech-tag">TypeScript</span>
+                            <span class="p-1 project-tech-tag">Tailwind CSS</span>
+                            <span class="p-1 project-tech-tag">React</span>
+                            <span class="p-1 project-tech-tag">Radix UI</span>
+                            <span class="p-1 project-tech-tag">Recharts</span>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <a href="https://erp-componentes-demo.vercel.app/" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
+                                Demo
+                            </a>
+                            <a href="https://github.com/JoseP190/ERP-Componentes-Demo" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <button onclick="toggleERPFeatures()" class="mt-4 text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <i class="fas fa-chevron-down mr-2 group-hover:translate-y-1 transition-transform" id="erp-arrow"></i>
+                            <span id="erp-button-text">Ver más</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="aspect-video bg-gray-100 relative group overflow-hidden">
+                        <img src="img/conversor.png" alt="Conversor de Monedas Preview" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-eye text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">Conversor de Monedas</h3>
+                            <p class="text-gray-500 text-sm font-medium">API de Conversión de Divisas</p>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-4">
+                            Aplicación que permite convertir monedas utilizando FastAPI, con sistema de caché para optimizar las llamadas a la API externa y validación de datos mediante Pydantic.
+                        </p>
+
+                        <div class="project-features" id="conversor-features" style="display: none;">
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Integración con ExchangeRate-API para tasas actualizadas</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sistema de caché para optimizar llamadas API</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Validación de datos con modelos Pydantic</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Soporte CORS para desarrollo frontend</span>
+                            </div>
+                            <div class="project-feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Interfaz web intuitiva para conversiones</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-3">
+                            <span class="p-1 project-tech-tag">Python</span>
+                            <span class="p-1 project-tech-tag">FastAPI</span>
+                            <span class="p-1 project-tech-tag">HTML</span>
+                            <span class="p-1 project-tech-tag">Pydantic</span>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <!-- <a href="#" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
+                                Demo
+                            </a> -->
+                            <a href="https://github.com/JoseP190/Conversor-de-Monedas" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                                <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <button onclick="toggleConversorFeatures()" class="mt-4 text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <i class="fas fa-chevron-down mr-2 group-hover:translate-y-1 transition-transform" id="conversor-arrow"></i>
+                            <span id="conversor-button-text">Ver más</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-gray-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="section-title mb-12 text-center" data-aos="fade-up">Contacto</h2>
+            <div class="flex justify-center space-x-8" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://www.linkedin.com/in/jose-pizarro-12484434b/" target="_blank" class="contact-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/JoseP190" target="_blank" class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/joseeeeee_e/" target="_blank" class="contact-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:josee.pizarro.ortiz@gmail.com" class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            mirror: true
+        });
+
+        function toggleMedScanFeatures() {
+            const features = document.getElementById('medscan-features');
+            const arrow = document.getElementById('medscan-arrow');
+            const buttonText = document.getElementById('medscan-button-text');
+            
+            if (features.style.display === 'none') {
+                features.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+                buttonText.textContent = 'Ver menos';
+            } else {
+                features.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+                buttonText.textContent = 'Ver más';
+            }
+        }
+
+        function toggleCHPFeatures() {
+            const features = document.getElementById('chp-features');
+            const arrow = document.getElementById('chp-arrow');
+            const buttonText = document.getElementById('chp-button-text');
+            
+            if (features.style.display === 'none') {
+                features.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+                buttonText.textContent = 'Ver menos';
+            } else {
+                features.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+                buttonText.textContent = 'Ver más';
+            }
+        }
+
+        function toggleGraficandoFeatures() {
+            const features = document.getElementById('graficando-features');
+            const arrow = document.getElementById('graficando-arrow');
+            const buttonText = document.getElementById('graficando-button-text');
+            
+            if (features.style.display === 'none') {
+                features.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+                buttonText.textContent = 'Ver menos';
+            } else {
+                features.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+                buttonText.textContent = 'Ver más';
+            }
+        }
+
+        function toggleERPFeatures() {
+            const features = document.getElementById('erp-features');
+            const arrow = document.getElementById('erp-arrow');
+            const buttonText = document.getElementById('erp-button-text');
+            
+            if (features.style.display === 'none') {
+                features.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+                buttonText.textContent = 'Ver menos';
+            } else {
+                features.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+                buttonText.textContent = 'Ver más';
+            }
+        }
+
+        function toggleConversorFeatures() {
+            const features = document.getElementById('conversor-features');
+            const arrow = document.getElementById('conversor-arrow');
+            const buttonText = document.getElementById('conversor-button-text');
+            
+            if (features.style.display === 'none') {
+                features.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+                buttonText.textContent = 'Ver menos';
+            } else {
+                features.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+                buttonText.textContent = 'Ver más';
+            }
+        }
+    </script>
+</body>
+</html> 
