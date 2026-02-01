@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José Pizarro - Desarrollador Full Stack</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%238B0000'/%3E%3Ctext x='50' y='70' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial, sans-serif'%3EJP%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23252C37'/%3E%3Ctext x='50' y='70' font-size='60' font-weight='bold' fill='%23F8C61E' text-anchor='middle' font-family='Arial, sans-serif'%3EJP%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -12,10 +12,17 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
         
+        :root {
+            --midnight: #252C37;
+            --sunburst: #F8C61E;
+            --sunburst-hover: #e0b318;
+            --midnight-soft: #2f3845;
+        }
+        
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: #f4f1ea;
-            color: #1a1a1a;
+            background-color: #f8f9fc;
+            color: #252C37;
         }
 
         .tech-grid {
@@ -29,8 +36,8 @@
 
         .tech-item {
             @apply transition-all;
-            background-color: #8B0000;
-            color: white;
+            background-color: var(--midnight);
+            color: var(--sunburst);
             width: 100%;
             max-width: 50px;
             aspect-ratio: 1;
@@ -56,9 +63,10 @@
         }
 
         .tech-item:hover {
-            background-color: #590000;
+            background-color: var(--sunburst);
+            color: var(--midnight);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 12px rgba(248, 198, 30, 0.4);
         }
 
         .tech-item:hover i {
@@ -77,25 +85,26 @@
         }
 
         .gradient-text {
-            @apply text-[#8B0000] relative;
+            color: var(--sunburst);
+            position: relative;
         }
 
         .hero-pattern {
-            background-color: #f4f1ea;
+            background-color: #f8f9fc;
             background-image: 
-                linear-gradient(45deg, #8B0000 25%, transparent 25%),
-                linear-gradient(-45deg, #8B0000 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #8B0000 75%),
-                linear-gradient(-45deg, transparent 75%, #8B0000 75%);
+                linear-gradient(45deg, var(--sunburst) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--sunburst) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--sunburst) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--sunburst) 75%);
             background-size: 20px 20px;
             background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-            opacity: 0.1;
+            opacity: 0.08;
         }
 
         .diagonal-split {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #8B0000 0%, #2B0000 100%);
+            background: linear-gradient(135deg, var(--midnight) 0%, #1a1f26 100%);
         }
 
         .geometric-pattern {
@@ -111,7 +120,7 @@
         .geometric-pattern::after {
             content: '';
             position: absolute;
-            background: #fff;
+            background: rgba(248, 198, 30, 0.15);
         }
 
         .geometric-pattern::before {
@@ -121,12 +130,12 @@
             left: -50%;
             transform: rotate(-30deg);
             box-shadow: 
-                0 30px #fff,
-                0 60px #fff,
-                0 90px #fff,
-                0 -30px #fff,
-                0 -60px #fff,
-                0 -90px #fff;
+                0 30px rgba(248, 198, 30, 0.15),
+                0 60px rgba(248, 198, 30, 0.15),
+                0 90px rgba(248, 198, 30, 0.15),
+                0 -30px rgba(248, 198, 30, 0.15),
+                0 -60px rgba(248, 198, 30, 0.15),
+                0 -90px rgba(248, 198, 30, 0.15);
         }
 
         .geometric-pattern::after {
@@ -136,12 +145,12 @@
             right: 20%;
             transform: rotate(-30deg);
             box-shadow: 
-                30px 0 #fff,
-                60px 0 #fff,
-                90px 0 #fff,
-                -30px 0 #fff,
-                -60px 0 #fff,
-                -90px 0 #fff;
+                30px 0 rgba(248, 198, 30, 0.15),
+                60px 0 rgba(248, 198, 30, 0.15),
+                90px 0 rgba(248, 198, 30, 0.15),
+                -30px 0 rgba(248, 198, 30, 0.15),
+                -60px 0 rgba(248, 198, 30, 0.15),
+                -90px 0 rgba(248, 198, 30, 0.15);
         }
 
         .hero-content {
@@ -170,8 +179,8 @@
         }
 
         .hero-button:hover {
-            background: white;
-            color: #8B0000;
+            background: var(--sunburst);
+            color: var(--midnight);
             text-shadow: none;
             transform: translateY(-2px);
         }
@@ -233,15 +242,16 @@
 
         .animated-border {
             position: relative;
-            border: 2px solid #8B0000;
+            border: 2px solid var(--sunburst);
             background: #fff;
             transition: all 0.3s ease;
         }
 
         .animated-border:hover {
-            background: #8B0000;
+            background: var(--sunburst);
+            color: var(--midnight);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(248, 198, 30, 0.35);
         }
 
         .section-title {
@@ -250,7 +260,7 @@
             position: relative;
             display: inline-block;
             padding: 0 1.5rem;
-            color: #8B0000;
+            color: var(--midnight);
             margin: 0 auto;
         }
 
@@ -260,7 +270,7 @@
             top: 50%;
             width: 100%;
             height: 2px;
-            background: #8B0000;
+            background: linear-gradient(90deg, transparent, var(--sunburst), transparent);
             transform: translateY(-50%);
         }
 
@@ -273,13 +283,13 @@
         }
 
         .project-card {
-            @apply bg-white shadow-xl;
+            @apply shadow-xl;
             transition: all 0.3s ease;
-            border: 1px solid rgba(139, 0, 0, 0.1);
-            background: linear-gradient(145deg, #ffffff, #f8f8f8);
+            border: 1px solid rgba(37, 44, 55, 0.12);
+            background: linear-gradient(145deg, #ffffff, #f8f9fc);
             max-width: 400px;
             margin: 0 auto;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             position: relative;
         }
 
@@ -296,8 +306,8 @@
         }
 
         .project-badge.principal {
-            background-color: #8B0000;
-            color: white;
+            background-color: var(--midnight);
+            color: var(--sunburst);
         }
 
         .project-badge.pequeno {
@@ -322,37 +332,39 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.2);
-            border-color: rgba(139, 0, 0, 0.2);
-            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 0 20px 40px rgba(37, 44, 55, 0.15), 0 0 0 1px rgba(248, 198, 30, 0.2);
+            border-color: rgba(248, 198, 30, 0.3);
+            background: linear-gradient(145deg, #ffffff, #f8f9fc);
         }
 
         .project-tech-tag {
             @apply px-3 py-1 text-xs font-medium rounded-full;
-            background-color: rgba(139, 0, 0, 0.15);
-            color: #8B0000;
-            border: 1px solid rgba(139, 0, 0, 0.1);
+            background-color: rgba(248, 198, 30, 0.2);
+            color: var(--midnight);
+            border: 1px solid rgba(248, 198, 30, 0.3);
         }
 
         .project-features {
             @apply space-y-2 mb-4;
-            background-color: rgba(139, 0, 0, 0.03);
+            background-color: rgba(37, 44, 55, 0.04);
             padding: 1rem;
             border-radius: 0.5rem;
-            border: 1px solid rgba(139, 0, 0, 0.05);
+            border: 1px solid rgba(37, 44, 55, 0.08);
         }
 
         .project-feature-item {
-            @apply flex items-start space-x-2 text-sm text-gray-700;
+            @apply flex items-start space-x-2 text-sm;
+            color: var(--midnight);
         }
 
         .project-feature-item i {
-            @apply text-[#8B0000] mt-1;
-            filter: drop-shadow(0 1px 1px rgba(139, 0, 0, 0.2));
+            color: var(--sunburst);
+            margin-top: 0.25rem;
         }
 
         .nav-link {
-            @apply relative text-gray-800 transition-colors font-medium;
+            @apply relative transition-colors font-medium;
+            color: var(--midnight);
             padding: 0.5rem 0;
         }
 
@@ -363,13 +375,13 @@
             height: 2px;
             bottom: 0;
             left: 50%;
-            background-color: #8B0000;
+            background-color: var(--sunburst);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
 
         .nav-link:hover {
-            color: #8B0000;
+            color: var(--sunburst);
         }
 
         .nav-link:hover::after {
@@ -377,7 +389,7 @@
         }
 
         .nav-link.active {
-            color: #8B0000;
+            color: var(--sunburst);
         }
 
         .nav-link.active::after {
@@ -387,15 +399,15 @@
         /* Estilos para los iconos de contacto */
         .contact-icon {
             @apply transition-all;
-            color: white;
-            background-color: #8B0000;
+            color: var(--midnight);
+            background-color: var(--sunburst);
             width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(248, 198, 30, 0.35);
         }
 
         .contact-icon i {
@@ -403,9 +415,10 @@
         }
 
         .contact-icon:hover {
-            background-color: #590000;
+            background-color: var(--midnight);
+            color: var(--sunburst);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(37, 44, 55, 0.3);
         }
 
         /* Ajustar el espaciado entre los iconos */
@@ -539,7 +552,7 @@
         }
 
         .modal-close:hover {
-            background: rgba(139, 0, 0, 0.8);
+            background: var(--midnight);
             transform: rotate(90deg);
         }
 
@@ -550,7 +563,7 @@
         .modal-title {
             font-size: 2rem;
             font-weight: bold;
-            color: #8B0000;
+            color: var(--midnight);
             margin-bottom: 0.5rem;
         }
 
@@ -573,7 +586,7 @@
 
         .modal-features h3 {
             font-size: 1.3rem;
-            color: #8B0000;
+            color: var(--midnight);
             margin-bottom: 1rem;
         }
 
@@ -583,7 +596,7 @@
 
         .modal-tech h3 {
             font-size: 1.3rem;
-            color: #8B0000;
+            color: var(--midnight);
             margin-bottom: 1rem;
         }
 
@@ -595,8 +608,8 @@
 
         .modal-link {
             padding: 0.75rem 1.5rem;
-            background-color: #8B0000;
-            color: white;
+            background-color: var(--midnight);
+            color: var(--sunburst);
             text-decoration: none;
             border-radius: 0.5rem;
             display: inline-flex;
@@ -607,9 +620,10 @@
         }
 
         .modal-link:hover {
-            background-color: #590000;
+            background-color: var(--sunburst);
+            color: var(--midnight);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(248, 198, 30, 0.4);
         }
 
         .project-card {
@@ -626,16 +640,17 @@
 </head>
 <body>
     <!-- Header/Navbar -->
-    <nav class="fixed w-full z-50 bg-white shadow-md">
+    <nav class="fixed w-full z-50 bg-[#252C37] shadow-lg backdrop-blur-sm border-b border-[#252C37]/80">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-[#8B0000] hover:text-[#590000] transition-colors">
+            <a href="#" class="text-2xl font-bold text-[#F8C61E] hover:text-[#F8C61E]/90 transition-colors">
                 JP.dev
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
-                <a href="#tecnologias" class="nav-link">Tecnologías</a>
-                <a href="#proyectos" class="nav-link">Proyectos</a>
-                <a href="#contacto" class="nav-link">Contacto</a>
+                <a href="#sobre-mi" class="nav-link text-white/90 hover:text-[#F8C61E]">Sobre Mí</a>
+                <a href="#experiencia" class="nav-link text-white/90 hover:text-[#F8C61E]">Experiencia</a>
+                <a href="#tecnologias" class="nav-link text-white/90 hover:text-[#F8C61E]">Tecnologías</a>
+                <a href="#proyectos" class="nav-link text-white/90 hover:text-[#F8C61E]">Proyectos</a>
+                <a href="#contacto" class="nav-link text-white/90 hover:text-[#F8C61E]">Contacto</a>
             </div>
         </div>
     </nav>
@@ -672,63 +687,63 @@
             <div class="text-center mb-12">
                 <h2 class="section-title" data-aos="fade-up">Sobre Mí</h2>
             </div>
-            <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                <p class="text-lg text-gray-700 mb-8">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-xl border border-[#252C37]/5" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-lg text-[#252C37]/90 mb-8">
                     Soy desarrollador Full Stack con experiencia en aplicaciones web completas y sistemas de gestión. He trabajado con empresas creando dashboards, herramientas internas y bases de datos, además de cofundar TagMax, una plataforma en producción para gestión de Órdenes de Trabajo. Manejo Node.js, Express, Django, Python, Docker, MongoDB, bases de datos relacionales, JavaScript y Looker Studio. Busco aportar en proyectos donde pueda desarrollar soluciones funcionales y escalables.
                 </p>
 
                 <!-- Certificados -->
                 <div class="space-y-4 mb-8">
-                    <h3 class="text-xl font-bold text-[#8B0000] mb-4">Certificados</h3>
+                    <h3 class="text-xl font-bold text-[#252C37] mb-4">Certificados</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg border border-[#252C37]/10">
                             <p class="font-semibold">Desarrollador Full Stack</p>
-                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                            <p class="text-[#252C37]/70">Instituto Profesional INACAP</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg border border-[#252C37]/10">
                             <p class="font-semibold">Diseño y Gestión de Base de Datos</p>
-                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                            <p class="text-[#252C37]/70">Instituto Profesional INACAP</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg border border-[#252C37]/10">
                             <p class="font-semibold">Diseño Ágil de Sistemas</p>
-                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                            <p class="text-[#252C37]/70">Instituto Profesional INACAP</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg border border-[#252C37]/10">
                             <p class="font-semibold">Desarrollo de Aplicaciones Básicas</p>
-                            <p class="text-gray-600">Instituto Profesional INACAP</p>
+                            <p class="text-[#252C37]/70">Instituto Profesional INACAP</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg border border-[#252C37]/10 md:col-span-2">
                             <p class="font-semibold">NDG Linux Unhatched</p>
-                            <p class="text-gray-600">Cisco Networking Academy</p>
+                            <p class="text-[#252C37]/70">Cisco Networking Academy</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Competencias -->
                 <div class="space-y-4">
-                    <h3 class="text-xl font-bold text-[#8B0000] mb-4">Competencias</h3>
+                    <h3 class="text-xl font-bold text-[#252C37] mb-4">Competencias</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="bg-gray-50 p-4 rounded-lg text-center">
-                            <i class="fas fa-lightbulb text-[#8B0000] text-xl mb-2"></i>
-                            <p class="font-medium">Creatividad e innovación</p>
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg text-center border border-[#252C37]/10">
+                            <i class="fas fa-lightbulb text-[#F8C61E] text-xl mb-2"></i>
+                            <p class="font-medium text-[#252C37]">Creatividad e innovación</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg text-center">
-                            <i class="fas fa-graduation-cap text-[#8B0000] text-xl mb-2"></i>
-                            <p class="font-medium">Facilidad para aprender</p>
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg text-center border border-[#252C37]/10">
+                            <i class="fas fa-graduation-cap text-[#F8C61E] text-xl mb-2"></i>
+                            <p class="font-medium text-[#252C37]">Facilidad para aprender</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg text-center">
-                            <i class="fas fa-clock text-[#8B0000] text-xl mb-2"></i>
-                            <p class="font-medium">Gestión del tiempo</p>
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg text-center border border-[#252C37]/10">
+                            <i class="fas fa-clock text-[#F8C61E] text-xl mb-2"></i>
+                            <p class="font-medium text-[#252C37]">Gestión del tiempo</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg text-center">
-                            <i class="fas fa-language text-[#8B0000] text-xl mb-2"></i>
-                            <p class="font-medium">Español (Nativo)</p>
+                        <div class="bg-[#252C37]/5 p-4 rounded-lg text-center border border-[#252C37]/10">
+                            <i class="fas fa-language text-[#F8C61E] text-xl mb-2"></i>
+                            <p class="font-medium text-[#252C37]">Español (Nativo)</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="300">
-                <a href="cv/José Pizarro Ortiz CV.pdf" target="_blank" class="px-6 py-3 border-2 border-[#8B0000] text-[#8B0000] rounded-lg hover:bg-[#8B0000] hover:text-white transition-colors flex items-center space-x-2">
+                <a href="cv/José Pizarro Ortiz CV.pdf" target="_blank" class="px-6 py-3 border-2 border-[#F8C61E] text-[#252C37] rounded-lg hover:bg-[#F8C61E] font-medium transition-colors flex items-center space-x-2">
                     <i class="fas fa-download"></i>
                     <span>CV</span>
                 </a>
@@ -736,8 +751,61 @@
         </div>
     </section>
 
+    <!-- Experiencia Section -->
+    <section id="experiencia" class="py-20 bg-[#f0f2f7] relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="section-title" data-aos="fade-up">Experiencia</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- TagMax -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-[#252C37]/10 hover:border-[#F8C61E]/30 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-[#252C37] flex items-center justify-center">
+                            <i class="fas fa-briefcase text-[#F8C61E] text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-[#252C37] mb-1">Cofundador & Desarrollador Backend</h3>
+                            <p class="text-[#F8C61E] font-semibold text-sm mb-2">TagMax</p>
+                            <p class="text-[#252C37]/60 text-xs font-medium mb-3">Septiembre 2025 – Actualmente</p>
+                            <p class="text-[#252C37]/90 text-sm leading-relaxed">Cofundador y desarrollador principal de TagMax, plataforma de gestión de Órdenes de Trabajo (OTs) actualmente en producción. Responsable del desarrollo backend y frontend, arquitectura del sistema, despliegue y mantenimiento, diseño e implementación de funcionalidades clave orientadas a clientes B2B.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Inversiones Akrom -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-[#252C37]/10 hover:border-[#F8C61E]/30 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-[#252C37] flex items-center justify-center">
+                            <i class="fas fa-chart-line text-[#F8C61E] text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-[#252C37] mb-1">Analista Programador</h3>
+                            <p class="text-[#F8C61E] font-semibold text-sm mb-2">Inversiones Akrom Limitada</p>
+                            <p class="text-[#252C37]/60 text-xs font-medium mb-3">Junio 2025 – Septiembre 2025</p>
+                            <p class="text-[#252C37]/90 text-sm leading-relaxed">Gestión integral de clientes y usuarios, asegurando funcionamiento y soporte continuo del sistema. Desarrollo de dashboards analíticos personalizados para distintos clientes.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- SOMTI -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-[#252C37]/10 hover:border-[#F8C61E]/30 transition-colors" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-[#252C37] flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-[#F8C61E] text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-[#252C37] mb-1">Práctica profesional</h3>
+                            <p class="text-[#F8C61E] font-semibold text-sm mb-2">SOMTI</p>
+                            <p class="text-[#252C37]/60 text-xs font-medium mb-3">Abril 2025 – Mayo 2025</p>
+                            <p class="text-[#252C37]/90 text-sm leading-relaxed">Gestión de usuarios y bases de datos. Desarrollo de dashboards y analíticas utilizando Looker Studio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tecnologías Section -->
-    <section id="tecnologias" class="py-20 bg-gray-50 relative overflow-hidden">
+    <section id="tecnologias" class="py-20 bg-white relative overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="section-title" data-aos="fade-up">Tecnologías</h2>
@@ -783,6 +851,26 @@
                     <i class="fab fa-git-alt"></i>
                     <p>Git</p>
                 </div>
+                <div class="tech-item">
+                    <i class="fas fa-leaf"></i>
+                    <p>Django</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-bolt"></i>
+                    <p>FastAPI</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-wind"></i>
+                    <p>Tailwind CSS</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-chart-line"></i>
+                    <p>Looker Studio</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <p>N8N</p>
+                </div>
             </div>
         </div>
     </section>
@@ -795,7 +883,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- TagMax - Proyecto Principal -->
-                <div class="project-card" data-aos="fade-up" onclick="openProjectModal('tagmax')" style="border: 2px solid #8B0000; box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);">
+                <div class="project-card" data-aos="fade-up" onclick="openProjectModal('tagmax')" style="border: 2px solid #F8C61E; box-shadow: 0 10px 30px rgba(248, 198, 30, 0.25);">
                     <div class="project-badge principal">
                         PROYECTO PRINCIPAL
                     </div>
@@ -822,7 +910,7 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-3">
-                            <h3 class="text-xl font-bold mb-1 text-[#8B0000]">TagMax</h3>
+                            <h3 class="text-xl font-bold mb-1 text-[#252C37]">TagMax</h3>
                             <p class="text-gray-500 text-xs font-medium">Sistema de Gestión de Órdenes de Trabajo</p>
                         </div>
                         
@@ -842,7 +930,7 @@
                         </div>
 
                         <div class="flex space-x-4">
-                            <a href="https://tagmax.cl" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://tagmax.cl" target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
                                 Ver Proyecto
                             </a>
@@ -866,7 +954,7 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-3">
-                            <h3 class="text-xl font-bold mb-1 text-[#8B0000]">TagMax Inventory</h3>
+                            <h3 class="text-xl font-bold mb-1 text-[#252C37]">TagMax Inventory</h3>
                             <p class="text-gray-500 text-xs font-medium">Sistema de Gestión de Inventario</p>
                         </div>
                         
@@ -895,7 +983,7 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-3">
-                            <h3 class="text-xl font-bold mb-1 text-[#8B0000]">MedScan</h3>
+                            <h3 class="text-xl font-bold mb-1 text-[#252C37]">MedScan</h3>
                             <p class="text-gray-500 text-xs font-medium">Extractor de Texto de Exámenes Médicos</p>
                         </div>
                         
@@ -912,11 +1000,11 @@
                         </div>
 
                         <div class="flex space-x-4">
-                            <!-- <a href="#" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <!-- <a href="#" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
                                 Demo
                             </a> -->
-                            <a href="https://github.com/JoseP190/MedScan---Extractor-de-Texto-de-Examenes-Medicos/tree/main" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://github.com/JoseP190/MedScan---Extractor-de-Texto-de-Examenes-Medicos/tree/main" target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
                                 GitHub
                             </a>
@@ -937,7 +1025,7 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-4">
-                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">Calculadora de Habitabilidad Planetaria</h3>
+                            <h3 class="text-2xl font-bold mb-1 text-[#252C37]">Calculadora de Habitabilidad Planetaria</h3>
                             <p class="text-gray-500 text-sm font-medium">Explorador Interactivo de Exoplanetas</p>
                         </div>
                         
@@ -953,11 +1041,11 @@
                         </div>
 
                         <div class="flex space-x-4">
-                            <!-- <a href="#" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <!-- <a href="#" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
                                 Demo
                             </a> -->
-                            <a href="https://github.com/JoseP190/Calculadora-de-Habitabilidad-Planetaria" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://github.com/JoseP190/Calculadora-de-Habitabilidad-Planetaria" target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
                                 GitHub
                             </a>
@@ -978,7 +1066,7 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-4">
-                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">GrafiCando</h3>
+                            <h3 class="text-2xl font-bold mb-1 text-[#252C37]">GrafiCando</h3>
                             <p class="text-gray-500 text-sm font-medium">Juego Educativo de Estadística</p>
                         </div>
                         
@@ -994,11 +1082,11 @@
                         </div>
 
                         <div class="flex space-x-4">
-                            <a href="https://grafi-cando.vercel.app/"  target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://grafi-cando.vercel.app/"  target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
                                 Demo
                             </a>
-                            <a href="https://github.com/JoseP190/GrafiCando" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://github.com/JoseP190/GrafiCando" target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
                                 GitHub
                             </a>
@@ -1019,7 +1107,7 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-4">
-                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">ERP Componentes Demo</h3>
+                            <h3 class="text-2xl font-bold mb-1 text-[#252C37]">ERP Componentes Demo</h3>
                             <p class="text-gray-500 text-sm font-medium">Sistema de Componentes Reutilizables</p>
                         </div>
                         
@@ -1037,11 +1125,11 @@
                         </div>
 
                         <div class="flex space-x-4">
-                            <a href="https://erp-componentes-demo.vercel.app/" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://erp-componentes-demo.vercel.app/" target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
                                 Demo
                             </a>
-                            <a href="https://github.com/JoseP190/ERP-Componentes-Demo" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://github.com/JoseP190/ERP-Componentes-Demo" target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
                                 GitHub
                             </a>
@@ -1062,7 +1150,7 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-4">
-                            <h3 class="text-2xl font-bold mb-1 text-[#8B0000]">Conversor de Monedas</h3>
+                            <h3 class="text-2xl font-bold mb-1 text-[#252C37]">Conversor de Monedas</h3>
                             <p class="text-gray-500 text-sm font-medium">API de Conversión de Divisas</p>
                         </div>
                         
@@ -1078,11 +1166,11 @@
                         </div>
 
                         <div class="flex space-x-4">
-                            <!-- <a href="#" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <!-- <a href="#" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fas fa-external-link-alt mr-2 group-hover:rotate-12 transition-transform"></i>
                                 Demo
                             </a> -->
-                            <a href="https://github.com/JoseP190/Conversor-de-Monedas" target="_blank" class="text-[#8B0000] hover:text-[#590000] flex items-center group">
+                            <a href="https://github.com/JoseP190/Conversor-de-Monedas" target="_blank" class="text-[#252C37] hover:text-[#F8C61E] flex items-center group">
                                 <i class="fab fa-github mr-2 group-hover:rotate-12 transition-transform"></i>
                                 GitHub
                             </a>
@@ -1123,7 +1211,7 @@
     </div>
 
     <!-- Contact Section -->
-    <section id="contacto" class="py-20 bg-gray-50 relative overflow-hidden">
+    <section id="contacto" class="py-20 bg-[#f0f2f7] relative overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="section-title" data-aos="fade-up">Contacto</h2>
@@ -1135,7 +1223,7 @@
                 <a href="https://github.com/JoseP190" target="_blank" class="contact-icon">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.instagram.com/joseeeeee_e/" target="_blank" class="contact-icon">
+                <a href="https://www.instagram.com/josee__pz/" target="_blank" class="contact-icon">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=josee.pizarro.ortiz@gmail.com&su=Contacto%20desde%20Portfolio" target="_blank" class="contact-icon">
@@ -1371,7 +1459,7 @@
             modalFeatures.innerHTML = '';
             project.features.forEach(feature => {
                 const featureItem = document.createElement('div');
-                featureItem.className = 'text-gray-700 mb-2';
+                featureItem.className = 'text-[#252C37]/90 mb-2';
                 featureItem.textContent = `- ${feature}`;
                 modalFeatures.appendChild(featureItem);
             });
@@ -1401,7 +1489,7 @@
             if (project.images.length === 0) {
                 // Sin imagen - mostrar placeholder
                 const placeholder = document.createElement('div');
-                placeholder.className = 'w-full h-full bg-gray-200 flex items-center justify-center';
+                placeholder.className = 'w-full h-full bg-[#252C37]/10 flex items-center justify-center';
                 placeholder.innerHTML = `
                     <div class="text-center text-gray-400 p-8">
                         <i class="fas fa-boxes text-6xl mb-4"></i>
