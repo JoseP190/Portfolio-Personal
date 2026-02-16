@@ -1,0 +1,24 @@
+# Carpetas ajenas al portafolio (otros proyectos o recursos no usados por index.html)
+Actividad del usuario de GitHub/
+condominio/
+Conversor de Monedas - FastApi/
+ERP Dashboard/
+GrafiCando/
+habitability-calculator/
+MedScan/
+MedScan1.0/
+svgs/
+Zello/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs y temporales
+*.log
+.env
+.env.local
+.env.*.local
